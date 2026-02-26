@@ -124,13 +124,14 @@
     .about-text { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 20px; }
     .about-text:last-child { margin-bottom: 0; }
 
-    /* EXPERIENCE & EDUCATION */
-    .exp-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr); gap: 40px; }
-    .exp-section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 18px; color: #111827; display: flex; align-items: center; gap: 8px; }
-    .exp-item { margin-bottom: 22px; }
-    .exp-role { font-weight: 600; color: #111827; margin-bottom: 4px; }
-    .exp-meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 6px; }
-    .exp-desc { font-size: 0.95rem; color: var(--text-muted); }
+       /* EXPERIENCE & EDUCATION */
+    .exp-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; }
+    .exp-section-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; color: #111827; display: flex; align-items: center; gap: 10px; }
+    .exp-item { margin-bottom: 28px; }
+    .exp-role { font-weight: 600; font-size: 1.05rem; color: #111827; margin-bottom: 6px; }
+    .exp-meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 10px; font-weight: 500; }
+    .exp-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
 
     /* PROJECTS */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 22px; }
@@ -246,48 +247,62 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE & EDUCATION -->
+      <!-- EXPERIENCE & EDUCATION -->
     <section id="experience" class="section">
       <div class="container">
         <h2 class="section-title">Background</h2>
         <div class="exp-grid">
+          
+          <!-- EXPERIENCE COLUMN -->
           <div>
             <div class="exp-section-title">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              Recent Experiences
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              Experience
             </div>
+            
             <div class="exp-item">
               <div class="exp-role">Senior Frontend Designer</div>
-              <div class="exp-meta">AIR Studios • 2025 – PRESENT</div>
-              <div class="exp-desc">Designed responsive website UI, wireframes, and prototypes using Figma/Adobe XD. Streamlined business
-requirements process, cutting delivery time by 15%, and deployed reporting framework for data-driven
-decisions and improved project visibility</div>
+              <div class="exp-meta">AR STUDIOS • FEB 2025 – NOV 2025</div>
+              <div class="exp-desc">Designed responsive website UI, wireframes, and prototypes using Figma/Adobe XD. Streamlined business requirements process, cutting delivery time by 15%, and deployed reporting framework for data-driven decisions and improved project visibility.</div>
+            </div>
+            
             <div class="exp-item">
               <div class="exp-role">Senior UI/UX Designer</div>
-              <div class="exp-meta">Design Pixels Singapore • 2024 – 2025 </div>
-              <div class="exp-desc">Designed user interfaces and wireframes; conducted user interviews, research, and information gathering.
-Assisted managers in project planning/execution, ensuring timeline adherence, budget monitoring, expense
-tracking, and financial reporting for cost-effectiveness.</div>
+              <div class="exp-meta">DESIGN PIXELS SINGAPORE • JAN 2025 – FEB 2025</div>
+              <div class="exp-desc">Designed user interfaces and wireframes; conducted user interviews, research, and information gathering. Assisted managers in project planning/execution, ensuring timeline adherence, budget monitoring, expense tracking, and financial reporting.</div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-role">UI/UX Designer</div>
+              <div class="exp-meta">VISIONEX DIGITAL AUSTRALIA • MAR 2024 – DEC 2024</div>
+              <div class="exp-desc">Specialized in web content design, social media post creation, and developing intuitive UI/UX solutions. Strengthened expertise in user-centered design, responsive layouts, and creative problem-solving to deliver impactful results.</div>
+            </div>
           </div>
+          
+          <!-- EDUCATION COLUMN -->
           <div>
             <div class="exp-section-title">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10z"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10z"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
               Education
             </div>
+            
             <div class="exp-item">
-              <div class="exp-role">Software Engineering Degree</div>
-              <div class="exp-meta">AUCKLAND, NZ • IN PROGRESS</div>
-              <div class="exp-desc">Focusing on object-oriented programming, database design, and web development fundamentals.</div>
+              <div class="exp-role">Master of Software Engineering</div>
+              <div class="exp-meta">YOOBEE COLLEGE, NZ • NOV 2025 – PRESENT</div>
+              <div class="exp-desc">Currently pursuing advanced studies in software engineering, focusing on modern development practices, system architecture, and delivering scalable digital solutions.</div>
             </div>
+            
             <div class="exp-item">
-              <div class="exp-role">MSE800 OOP Coursework</div>
-              <div class="exp-meta">CURRENT MODULE</div>
-              <div class="exp-desc">Developing console applications using encapsulation, inheritance, and polymorphism in Python.</div>
+              <div class="exp-role">BSc (Hons) Information Technology</div>
+              <div class="exp-meta">SLIIT UNIVERSITY, SRI LANKA • FEB 2021 – DEC 2024</div>
+              <div class="exp-desc">Specialized in Interactive Media. Gained a strong foundation in programming, database management, and designing engaging digital interactions.</div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
+
 
     <!-- PROJECTS -->
     <section id="projects" class="section section-alt">
