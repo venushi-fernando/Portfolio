@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveen Fonseka | Software Engineer & UI/UX Designer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #fbf9ff;
+      --primary: #9b51e0;
+      --primary-dark: #8a41c8;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border: #ece4fb;
+      --card: #ffffff;
+      --shadow-soft: 0 10px 30px rgba(155, 81, 224, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+
+    /* NAVBAR */
+    header { position: fixed; top: 0; width: 100%; z-index: 30; backdrop-filter: blur(12px); background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; letter-spacing: 0.08em; font-size: 0.9rem; color: var(--primary); }
+    nav a { margin-left: 20px; text-decoration: none; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; position: relative; transition: color 0.2s ease; }
+    nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--primary); transition: width 0.2s ease; }
+    nav a:hover { color: var(--primary); }
+    nav a:hover::after { width: 100%; }
+
+    main { margin-top: 76px; }
+
+    .section { padding: 90px 24px; }
+    .section-alt { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: 2rem; font-weight: 700; color: #111827; margin-bottom: 40px; text-align: left; }
+
+    /* HERO */
+    #hero { padding-top: 110px; padding-bottom: 110px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 40px; align-items: center; }
+    .hero-title { font-size: 2.9rem; font-weight: 700; margin-bottom: 12px; color: #111827; }
+    .hero-sub { font-size: 1.2rem; font-weight: 500; color: var(--primary); margin-bottom: 14px; }
+    .hero-meta { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 10px; }
+    .hero-location { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 26px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn { padding: 11px 22px; border-radius: 999px; border: 1px solid transparent; font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; cursor: pointer; }
+    .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow-soft); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-ghost { background: white; color: var(--primary); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--primary); }
+
+    .hero-photo { justify-self: center; }
+    .hero-photo-inner { width: 260px; height: 260px; border-radius: 999px; background: linear-gradient(135deg,#f3e8ff,#ede9fe); padding: 8px; box-shadow: var(--shadow-soft); }
+    .hero-photo-inner img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; border: 3px solid #fff; }
+
+    /* ABOUT - FIXED WIDTH & LEFT ALIGN */
+    #about .about-content { max-width: 650px; margin: 0 auto; }
+    .about-text { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 20px; }
+    .about-text:last-child { margin-bottom: 0; }
+
+    /* EXPERIENCE & EDUCATION */
+    .exp-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr); gap: 40px; }
+    .exp-section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 18px; color: #111827; display: flex; align-items: center; gap: 8px; }
+    .exp-item { margin-bottom: 22px; }
+    .exp-role { font-weight: 600; color: #111827; margin-bottom: 4px; }
+    .exp-meta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 6px; }
+    .exp-desc { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 22px; }
+    .project-card { background: white; border-radius: 14px; border: 1px solid var(--border); padding: 18px 18px 16px; box-shadow: 0 8px 20px rgba(15,23,42,0.05); display: flex; flex-direction: column; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .project-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .project-title { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: #111827; }
+    .project-type { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 8px; }
+    .project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag { font-size: 0.72rem; padding: 4px 8px; border-radius: 999px; background: #f3e8ff; color: #6b21a8; font-weight: 500; }
+    .project-link { font-size: 0.85rem; color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: auto; }
+
+    /* SKILLS WITH ICONS */
+    .skills-stack { display: grid; gap: 16px; }
+    .skill-row { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 18px 20px; box-shadow: 0 6px 18px rgba(15,23,42,0.04); }
+    .skill-row-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; display:flex; align-items:center; gap:8px; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 0.75rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: #f9fafb; color: #374151; }
+
+    /* HOBBIES WITH ICONS */
+    .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 18px; }
+    .hobby-card { background:white; border-radius:14px; border:1px solid var(--border); padding:16px 18px; box-shadow:0 6px 18px rgba(15,23,42,0.04); display:flex; align-items:flex-start; gap:10px; }
+    .hobby-icon { width:32px; height:32px; border-radius:6px; background:#f3e8ff; display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0; margin-top:2px; }
+    .hobby-text { flex:1; }
+    .hobby-name { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+    .hobby-desc { font-size:0.88rem; color:var(--text-muted); }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(to bottom,#fbf9ff,#ffffff); }
+    .contact-layout { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:32px; align-items:stretch; }
+    .contact-intro { font-size:0.95rem; color:var(--text-muted); margin-bottom:18px; }
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+    .contact-card { display:flex; align-items:center; padding:12px 14px; border-radius:999px; background:white; border:1px solid var(--border); box-shadow:0 6px 16px rgba(15,23,42,0.04); text-decoration:none; color:var(--text-main); transition:transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease; }
+    .contact-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-soft); border-color:var(--primary); }
+    .contact-icon { width:30px; height:30px; border-radius:999px; display:flex; align-items:center; justify-content:center; margin-right:10px; background:#f3e8ff; color:var(--primary); flex-shrink:0; }
+    .contact-labels { display:flex; flex-direction:column; }
+    .contact-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); }
+    .contact-value { font-size:0.86rem; font-weight:500; }
+
+    .cta-card { background:white; border-radius:20px; border:1px solid var(--border); padding:24px 22px; box-shadow:var(--shadow-soft); display:flex; flex-direction:column; justify-content:center; }
+    .cta-title { font-size:1.25rem; font-weight:600; margin-bottom:10px; }
+    .cta-text { font-size:0.9rem; color:var(--text-muted); margin-bottom:16px; }
+
+    footer { padding:18px 24px; text-align:center; font-size:0.8rem; color:#9ca3af; border-top:1px solid var(--border); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .exp-grid, .contact-layout { grid-template-columns: minmax(0,1fr); }
+      .hero-photo-inner { width: 220px; height: 220px; margin-bottom: 8px; }
+      .section { padding: 70px 20px; }
+      .section-title { text-align: left; font-size: 1.7rem; }
+      #about .about-content { max-width: 100%; padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">NF</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-title">Naveen Fonseka</h1>
+          <div class="hero-sub">Software Engineering Student & UI/UX Designer</div>
+          <div class="hero-meta">Building clean interfaces and practical software projects across Python, web, and design.</div>
+          <div class="hero-location">Auckland, New Zealand</div>
+          <div class="hero-actions">
+            <a href="Naveen_Fonseka_CV.pdf" download class="btn btn-primary">Download Resume</a>
+            <a href="#projects" class="btn btn-ghost">View Projects</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="hero-photo-inner">
+            <img src="https://via.placeholder.com/400x400/f4effa/9b51e0?text=Naveen" alt="Naveen Fonseka" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT - NORMAL SIZE & LEFT ALIGN -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            I am a Software Engineering student currently completing my MSE800 Object-Oriented Programming coursework. I enjoy bridging functional backend logic with intuitive, visually polished interfaces. My experience spans Python, frontend development, and UI/UX design using Figma and Adobe tools.
+          </div>
+          <div class="about-text">
+            Outside of code, I care deeply about storytelling through visuals and content. I combine engineering discipline with a designer's eye to create projects that feel professional, thoughtful, and easy to use.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Background</h2>
+        <div class="exp-grid">
+          <div>
+            <div class="exp-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              Experience
+            </div>
+            <div class="exp-item">
+              <div class="exp-role">Freelance UI/UX Designer</div>
+              <div class="exp-meta">SELF-EMPLOYED • 2024 – PRESENT</div>
+              <div class="exp-desc">Designing high-fidelity prototypes and responsive layouts using Figma, focusing on clear user flows and clean visual hierarchy.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-role">Delivery Driver</div>
+              <div class="exp-meta">UBER EATS • 2023 – PRESENT</div>
+              <div class="exp-desc">Managing efficient delivery routes across Auckland and building strong time-management and customer communication skills.</div>
+            </div>
+          </div>
+          <div>
+            <div class="exp-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10z"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
+              Education
+            </div>
+            <div class="exp-item">
+              <div class="exp-role">Software Engineering Degree</div>
+              <div class="exp-meta">AUCKLAND, NZ • IN PROGRESS</div>
+              <div class="exp-desc">Focusing on object-oriented programming, database design, and web development fundamentals.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-role">MSE800 OOP Coursework</div>
+              <div class="exp-meta">CURRENT MODULE</div>
+              <div class="exp-desc">Developing console applications using encapsulation, inheritance, and polymorphism in Python.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-type">Python · OOP</div>
+            <div class="project-title">Car Rental System</div>
+            <div class="project-desc">Console-based vehicle rental system demonstrating OOP principles, rental pricing, and basic data management.</div>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">OOP</span><span class="tag">CLI</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">Open GitHub Repo ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">UI/UX · Figma</div>
+            <div class="project-title">E-Commerce App UI</div>
+            <div class="project-desc">Mobile shopping experience designed in Figma with clear navigation, product cards, and checkout flows.</div>
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">UI/UX</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">View Prototype ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">Web · JavaScript</div>
+            <div class="project-title">Study Task Manager</div>
+            <div class="project-desc">Browser-based task manager for students with local storage, priorities, and responsive layout.</div>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">Open Live App ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">Design · Databases</div>
+            <div class="project-title">Database Design Case Study</div>
+            <div class="project-desc">ERDs and schema design for a small business scenario, focusing on normalization and clear relationships.</div>
+            <div class="project-tags">
+              <span class="tag">SQL</span><span class="tag">ERD</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">View Case Study ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">Content · Video</div>
+            <div class="project-title">Video Production Reel</div>
+            <div class="project-desc">Short reel showcasing color grading, pacing, and visual storytelling using DaVinci Resolve.</div>
+            <div class="project-tags">
+              <span class="tag">DaVinci</span><span class="tag">Editing</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">Watch Reel ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">Design · Branding</div>
+            <div class="project-title">Graphic Design Portfolio</div>
+            <div class="project-desc">Collection of branding, logo, and social post designs created for personal and mock clients.</div>
+            <div class="project-tags">
+              <span class="tag">Adobe</span><span class="tag">Branding</span>
+            </div>
+            <a class="project-link" href="#" target="_blank">View Gallery ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS WITH ICONS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Core Skills</h2>
+        <div class="skills-stack">
+          <div class="skill-row">
+            <div class="skill-row-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              Modern Frontend
+            </div>
+            <div class="skill-chips">
+              <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">Responsive Layouts</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              </svg>
+              Backend & Programming
+            </div>
+            <div class="skill-chips">
+              <span class="chip">Python</span><span class="chip">OOP</span><span class="chip">Database Design</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              </svg>
+              Product & Design
+            </div>
+            <div class="skill-chips">
+              <span class="chip">Figma</span><span class="chip">UI/UX</span><span class="chip">Adobe Creative Suite</span><span class="chip">DaVinci Resolve</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+              </svg>
+              Engineering Tools
+            </div>
+            <div class="skill-chips">
+              <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOBBIES WITH ICONS -->
+    <section id="hobbies" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Hobbies</h2>
+        <div class="hobby-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="hobby-text">
+              <div class="hobby-name">Traveling New Zealand</div>
+              <div class="hobby-desc">Exploring new spots around Auckland and beyond, often capturing them through photos and video.</div>
+            </div>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <div class="hobby-text">
+              <div class="hobby-name">Reading</div>
+              <div class="hobby-desc">Mix of tech, design, and personal development books to grow both skills and mindset.</div>
+            </div>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <div class="hobby-text">
+              <div class="hobby-name">Content Creation</div>
+              <div class="hobby-desc">Planning, shooting, and editing content for social platforms with a focus on visuals.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-layout">
+          <div>
+            <p class="contact-intro">Looking forward to connecting with you. Feel free to reach out through any of the following channels.</p>
+            <div class="contact-grid">
+              <a class="contact-card" href="mailto:your.email@example.com">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,7 12,13 21,7"/></svg>
+                </div>
+                <div class="contact-labels">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">your.email@gmail.com</span>
+                </div>
+              </a>
+
+              <a class="contact-card" href="https://github.com/yourusername" target="_blank">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3"/><path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 4.77 5.07 5.07 0 0 0 17.91 1S16.73.65 14 2.48a13.38 13.38 0 0 0-7 0C4.27.65 3.09 1 3.09 1A5.07 5.07 0 0 0 3 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/></svg>
+                </div>
+                <div class="contact-labels">
+                  <span class="contact-label">GitHub</span>
+                  <span class="contact-value">github.com/yourusername</span>
+                </div>
+              </a>
+
+              <a class="contact-card" href="https://linkedin.com/in/yourusername" target="_blank">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <div class="contact-labels">
+                  <span class="contact-label">LinkedIn</span>
+                  <span class="contact-value">linkedin.com/in/yourusername</span>
+                </div>
+              </a>
+
+              <div class="contact-card" style="cursor:default; pointer-events:none;">
+                <div class="contact-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+                </div>
+                <div class="contact-labels">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value">Auckland, New Zealand</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="cta-card">
+            <div class="cta-title">Let's Create Something Great</div>
+            <div class="cta-text">Whether it's UI/UX work, frontend development, or content projects, I'm open to opportunities and collaborations.</div>
+            <a href="mailto:your.email@example.com" class="btn btn-primary" style="align-self:flex-start;margin-top:4px;">Send Email</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Naveen Fonseka. All rights reserved.</footer>
+</body>
+</html>
