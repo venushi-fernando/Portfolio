@@ -17,6 +17,10 @@
       --border: #ece4fb;
       --card: #ffffff;
       --shadow-soft: 0 10px 30px rgba(155, 81, 224, 0.12);
+      
+      /* New vars for hero */
+      --hero-blob: #f3e8ff;
+      --hero-blob-hover: #e9d5ff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -39,26 +43,83 @@
     .container { max-width: 1100px; margin: 0 auto; }
     .section-title { font-size: 2rem; font-weight: 700; color: #111827; margin-bottom: 40px; text-align: left; }
 
-    /* HERO */
-    #hero { padding-top: 110px; padding-bottom: 110px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 40px; align-items: center; }
-    .hero-title { font-size: 2.9rem; font-weight: 700; margin-bottom: 12px; color: #111827; }
-    .hero-sub { font-size: 1.2rem; font-weight: 500; color: var(--primary); margin-bottom: 14px; }
-    .hero-meta { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 10px; }
-    .hero-location { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 26px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    /* HERO - UPDATED WITH BLOB & FLOATING LABEL */
+    #hero { padding-top: 130px; padding-bottom: 130px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 60px; align-items: center; }
+    .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 16px; color: #111827; letter-spacing: -0.02em; }
+    .hero-sub { font-size: 1.3rem; font-weight: 500; color: var(--primary); margin-bottom: 20px; }
+    .hero-meta { font-size: 1rem; color: var(--text-muted); margin-bottom: 12px; max-width: 90%; }
+    .hero-location { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
-    .btn { padding: 11px 22px; border-radius: 999px; border: 1px solid transparent; font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; cursor: pointer; }
+    .btn { padding: 12px 26px; border-radius: 999px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; cursor: pointer; }
     .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow-soft); }
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
     .btn-ghost { background: white; color: var(--primary); border-color: var(--border); }
     .btn-ghost:hover { border-color: var(--primary); }
 
-    .hero-photo { justify-self: center; }
-    .hero-photo-inner { width: 260px; height: 260px; border-radius: 999px; background: linear-gradient(135deg,#f3e8ff,#ede9fe); padding: 8px; box-shadow: var(--shadow-soft); }
-    .hero-photo-inner img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; border: 3px solid #fff; }
+    /* NEW HERO PHOTO LAYOUT */
+    .hero-photo-wrapper {
+        position: relative;
+        justify-self: center;
+        width: 320px;
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-    /* ABOUT - FIXED WIDTH & LEFT ALIGN */
+    /* The soft purple circle background */
+    .hero-blob-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--hero-blob);
+        border-radius: 50%;
+        z-index: 1;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .hero-photo-wrapper:hover .hero-blob-bg {
+        transform: scale(1.05);
+        background-color: var(--hero-blob-hover);
+    }
+
+    /* The actual image */
+    .hero-image {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid transparent; 
+    }
+
+    /* Floating Name Tag */
+    .floating-tag {
+        position: absolute;
+        top: 20px;
+        left: -20px;
+        z-index: 3;
+        background: white;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #111827;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        border: 1px solid var(--border);
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* ABOUT */
     #about .about-content { max-width: 650px; margin: 0 auto; }
     .about-text { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 20px; }
     .about-text:last-child { margin-bottom: 0; }
@@ -116,10 +177,11 @@
     footer { padding:18px 24px; text-align:center; font-size:0.8rem; color:#9ca3af; border-top:1px solid var(--border); }
 
     @media (max-width: 900px) {
-      .hero-grid, .exp-grid, .contact-layout { grid-template-columns: minmax(0,1fr); }
-      .hero-photo-inner { width: 220px; height: 220px; margin-bottom: 8px; }
+      .hero-grid, .exp-grid, .contact-layout { grid-template-columns: minmax(0,1fr); text-align: left; }
+      .hero-photo-wrapper { width: 260px; height: 260px; margin-top: 20px; justify-self: flex-start; }
+      .floating-tag { left: 0; top: 10px; }
       .section { padding: 70px 20px; }
-      .section-title { text-align: left; font-size: 1.7rem; }
+      .section-title { font-size: 1.7rem; }
       #about .about-content { max-width: 100%; padding: 0 20px; }
     }
   </style>
@@ -127,7 +189,7 @@
 <body>
   <header>
     <div class="nav-inner">
-      <div class="logo">NF</div>
+      <div class="logo">VF</div>
       <nav>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -144,24 +206,31 @@
     <section id="hero" class="section">
       <div class="container hero-grid">
         <div>
-          <h1 class="hero-title">Venushi Fernando Fernando</h1>
-          <div class="hero-sub">Software Engineering student • UI/UX enthusiast • Frontend builder</div>
+          <h1 class="hero-title">Venushi Fernando</h1>
+          <div class="hero-sub">Software Engineering Student & UI/UX Designer</div>
           <div class="hero-meta">Building clean interfaces and practical software projects across Python, web, and design.</div>
           <div class="hero-location">Auckland, New Zealand</div>
+          
           <div class="hero-actions">
             <a href="Venushi_Fernando_CV.pdf" download class="btn btn-primary">Download Resume</a>
             <a href="#projects" class="btn btn-ghost">View Projects</a>
           </div>
         </div>
-        <div class="hero-photo">
-          <div class="hero-photo-inner">
-            <img src="https://via.placeholder.com/400x400/f4effa/9b51e0?text=Naveen" alt="Venushi Fernando" />
-          </div>
+
+        <div class="hero-photo-wrapper">
+            <!-- Floating tag with your name -->
+            <div class="floating-tag">Venushi Fernando</div>
+            
+            <!-- Soft purple circle background -->
+            <div class="hero-blob-bg"></div>
+            
+            <!-- Picture -->
+            <img class="hero-image" src="your-photo.png" alt="Venushi Fernando" onerror="this.style.display='none'" />
         </div>
       </div>
     </section>
 
-    <!-- ABOUT - NORMAL SIZE & LEFT ALIGN -->
+    <!-- ABOUT -->
     <section id="about" class="section section-alt">
       <div class="container">
         <h2 class="section-title">About Me</h2>
@@ -441,6 +510,6 @@
     </section>
   </main>
 
-  <footer>© 2026 Naveen Fonseka. All rights reserved.</footer>
+  <footer>© 2026 Venushi Fernando. All rights reserved.</footer>
 </body>
 </html>
