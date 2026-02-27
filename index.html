@@ -119,10 +119,12 @@
         100% { transform: translateY(0px); }
     }
 
-    /* ABOUT */
-    #about .about-content { max-width: 650px; margin: 0 auto; }
-    .about-text { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 20px; }
+     /* ABOUT */
+    .about-layout { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
+    #about .section-title { margin-bottom: 0; }
+    .about-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
     .about-text:last-child { margin-bottom: 0; }
+
 
        /* EXPERIENCE & EDUCATION */
     .exp-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; }
@@ -233,19 +235,20 @@
 
     <!-- ABOUT -->
     <section id="about" class="section section-alt">
-      <div class="container">
+      <div class="container about-layout">
         <h2 class="section-title">About Me</h2>
+        
         <div class="about-content">
           <div class="about-text">
-           I am a dedicated Software Engineering Master’s student at YOOBEE College, New Zealand, with a strong foundation in Information Technology and Interactive Media. My background bridges the gap between functional code and aesthetic design, with extensive experience in responsive web design, HTML/CSS/JavaScript, and cross-platform applications. I am passionate about creating digital solutions that are not only technically sound but also highly intuitive and user-centered.
+            I am a dedicated Software Engineering Master’s student at YOOBEE College, New Zealand, with a strong foundation in Information Technology and Interactive Media. My background bridges the gap between functional code and aesthetic design, with extensive experience in responsive web design, HTML/CSS/JavaScript, and cross-platform applications. I am passionate about creating digital solutions that are not only technically sound but also highly intuitive and user-centered.
           </div>
           <div class="about-text">
-          Professionally, I have built a proven track record as a Senior UI/UX and Frontend Designer across international studios in Singapore and Australia. Using tools like Figma and Adobe Creative Suite, I specialize in conducting user research, developing high-fidelity prototypes, and streamlining design processes. I thrive in fast-paced environments where I can combine my engineering discipline with my creative problem-solving skills to deliver high-impact digital experiences.
+            Professionally, I have built a proven track record as a Senior UI/UX and Frontend Designer across international studios in Singapore and Australia. Using tools like Figma and Adobe Creative Suite, I specialize in conducting user research, developing high-fidelity prototypes, and streamlining design processes. I thrive in fast-paced environments where I can combine my engineering discipline with my creative problem-solving skills to deliver high-impact digital experiences.
           </div>
-
         </div>
       </div>
     </section>
+
 
       <!-- EXPERIENCE & EDUCATION -->
     <section id="experience" class="section">
