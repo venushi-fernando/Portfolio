@@ -52,6 +52,41 @@
     .hero-location { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 32px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
+    /* --- STATUS BADGE STYLES --- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.05); /* Slight transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  border-radius: 999px; /* Pill shape */
+  font-size: 0.9rem;
+  color: #e2e8f0; /* Light text color, change if your hero is white */
+  margin-bottom: 20px; /* Space between badge and your name */
+}
+
+/* The pulsing green dot */
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e; /* Bright green */
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  /* Optional: Add a gentle pulse animation */
+  animation: pulse 2s infinite;
+}
+
+/* Optional Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+
+
     .btn { padding: 12px 26px; border-radius: 999px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; cursor: pointer; }
     .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow-soft); }
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
@@ -219,6 +254,11 @@
     <section id="hero" class="section">
       <div class="container hero-grid">
         <div>
+          <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for part-time / internship roles · Auckland, NZ
+          </div>
+
           <h1 class="hero-title">Venushi Fernando</h1>
           <div class="hero-sub">Software Engineering student • UI/UX enthusiast • Frontend builder </div>
           <div class="hero-meta"> "A Master of Software Engineering student in New Zealand, combining advanced UI/UX expertise with frontend coding to design and build intuitive, user-centered digital experiences."</div>
